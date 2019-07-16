@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Dodaj psa</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}" />
+
+    <script th:src="@{/webjars/jquery/3.2.1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div class="container">
+
+   <form class="form-horizontal" th:object="${dog}" th:action="@{/dogs}" th:method="post">
+        <div class="form-group">
+             <label class="control-label">Imie:</label>
+             <input type="text" class="form-control" th:field="*{name}"/>
+            <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"/>
+         </div>
+       <div class="form-group">
+           <label class="control-label">Wiek:</label>
+           <input type="number" class="form-control" th:field="*{age}"/>
+           <p th:if="${#fields.hasErrors('age')}" th:errors="*{age}"/>
+       </div>
+       <div class="form-group">
+           <label class="control-label">Rasa:</label>
+           <input type="text" class="form-control" th:field="*{race}"/>
+           <p th:if="${#fields.hasErrors('race')}" th:errors="*{race}"/>
+       </div>
+       <div class="form-group">
+           <label class="control-label">Wybierz płeć</label>
+           <select th:field="*{sex}">
+               <option th:each="sexType : ${sexTypes}"
+                       th:value="${sexType}"
+                       th:text="${sexType}">?</option>
+           </select>
+       </div>
+       <div class="form-group">
+           <label class="control-label">Imię i nazwisko właściciela:</label>
+           <input type="text" class="form-control" th:field="*{ownerFullName}"/>
+       </div>
+       <div class="form-group">
+           <label class="control-label">Numer telefonu właściciela:</label>
+           <input type="number" class="form-control" th:field="*{ownerPhoneNumber}"/>
+       </div>
+       <div class="row">
+           <button type="submit" class="btn btn-default">Dodaj Psa</button>
+       </div>
+   </form>
+</div>
+</body>
+</html>

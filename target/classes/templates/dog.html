@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Pogląd psa</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}" />
+
+    <script th:src="@{/webjars/jquery/3.2.1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div class="container">
+   Data:<span th:text="${timecomponent.date}"/>
+    Czas:<span th:text="${timecomponent.time}"/>
+    <table class="table">
+        <thead>
+        <tr>
+        <td></td>
+        <td></td>
+        </tr>
+        </thead>
+        <tr>
+    <td th:text="${'Imie: ' + dog.name}"></td>
+        </tr>
+        <tr>
+    <td th:text="${'Wiek: ' + dog.age} + ' l.'"></td>
+        </tr>
+        <tr>
+    <td th:text="${'Rasa: ' + dog.race}"></td>
+        </tr>
+        <tr>
+    <td th:text="${'Płeć: ' + dog.sex}"></td>
+        </tr>
+        <tr>
+    <td th:text="${'Imie i nazwisko właściciela: ' + dog.ownerFullName}"></td>
+        </tr>
+        <tr>
+    <td th:text="${'Numer telefonu właściciela: ' + dog.ownerPhoneNumber}"></td>
+        </tr>
+        <tr>
+            <td th:text="'Opłata za pobyt psa: ' + ${dog.ownerCharge} + ' zł          '"></td>
+            <td><a th:href="${'/dog/deleteCharge/'+dog.id}">Wyzeruj dług</a></td>
+        </tr>
+        <tr>
+    <td th:text="'Data rozpoczęcia pobytu: ' + ${dog.startOfStayDate}"></td>
+        </tr>
+        <tr>
+    <td th:text="'Data zakończenia pobytu: ' + ${dog.endOfStayDate}"></td>
+        </tr>
+        <tr>
+    <td th:text="'Czas pobytu: ' + ${dog.durationOfStayInDays} + ' dni'"></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

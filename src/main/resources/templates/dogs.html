@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista Psów</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}" />
+
+    <script th:src="@{/webjars/jquery/3.2.1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div class="container">
+    Data:<span th:text="${timecomponent.date}"/>
+    Czas:<span th:text="${timecomponent.time}"/>
+<table class="table">
+    <thead>
+    <tr><td>Imie</td>
+        <td>Wiek</td>
+        <td>Rasa</td>
+        <td>Płeć</td>
+        <td>Kojec</td>
+        <td></td>
+        <td></td></tr>
+    </thead>
+<tbody th:each="dog : ${dogs}">
+    <tr>
+        <td th:text="${dog.name}"></td>
+        <td th:text="${dog.age} + ' l.'"></td>
+        <td th:text="${dog.race}"></td>
+        <td th:text="${dog.sex}"></td>
+        <td>
+            <span th:if="${dog.cage==null}">Brak przypisanego kojca <a th:href="${'/assignCage?dogId='+dog.id}">Przypisz kojec</a></span>
+            <span th:if="${dog.cage!=null}" th:text="${dog.cage.description}"/>
+        </td>
+        <td>
+            <span th:if="${dog.cage==null}"></span>
+            <span th:if="${dog.cage!=null}"><a th:href="${'/dog/deleteCage/'+dog.id}">Wypisz psa z kojca</a></span>
+        </td>
+        <td><a th:href="${'/dog?id='+dog.id}">Podgląd</a> </td>
+        <td><a th:href="${'/dog/delete/'+dog.id}">Usuń psa</a> </td>
+    </tr>
+</tbody>
+</table>
+    <div class="row">
+        <a href="/newdog">Dodaj Psa</a>
+    </div>
+    <div class="row">
+        <a href="/cages">Lista kojców</a>
+    </div>
+    <div class="text-center">
+        <img th:src="@{${'/images/cageplan.png'}}" class="img-thumbnail"/>
+    </div>
+</div>
+</body>
+</html>
