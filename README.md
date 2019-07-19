@@ -6,7 +6,7 @@ Buisness application made to schedule the stay of dogs, check which cages are fr
 To run application we need to create MySql Database named: 'dogshotel', and run sql scripts which are uploaded in folder sqlscripts.
 
 On the main page (localhost:8080/dogs) we can se a table with dogs that are signed. From this point we can check the list of cages, remove dog from list, add a new dog to the list and assign a Cage to the dog:
-![obraz](https://user-images.githubusercontent.com/48680815/61054214-4d3f0e00-a3ef-11e9-8375-3440c16d7f97.png)
+![obraz](https://user-images.githubusercontent.com/48680815/61532879-931d5700-aa2b-11e9-866a-5f1294763acd.png)
 
 After clicking "dodaj psa" link, we will be directed to dog adding form. Here we can put the informations about dog and the owner. Fields "imie", "rasa" and "wiek" cannot stay empty to add a dog (if we will not type anything we will be redirected to form again with information that fields cannot be empty). We can choose a dog sex from four different types (these information may be useful for the owners of buisness). After filling everything and clicking "dodaj psa" button we are redirected to the table with dogs. We can see a new dog and it is already stored in database.
 ![obraz](https://user-images.githubusercontent.com/48680815/61054437-baeb3a00-a3ef-11e9-9510-1634d0201a7d.png)
